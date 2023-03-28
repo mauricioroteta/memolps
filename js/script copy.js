@@ -2,9 +2,6 @@ const MAXIMOS_INTENTOS = 8, // Intentos máximos que tiene el jugador
     COLUMNAS = 4, // Columnas del memorama
     SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
     NOMBRE_IMAGEN_OCULTA = "./img/lps.svg"; // La imagen que se muestra cuando la real está oculta
-    var nombre = ''
-    var email = ''
-    var telefono = ''
 new Vue({
     el: "#app",
     data: () => ({
@@ -50,22 +47,17 @@ new Vue({
                     title: "¡Ganaste!",
                     html: `
                 <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
-                <p class="h4">Muy bien hecho</p><br>` + 
-                '<input id="nombre" class="swal2-input" placeholder="Nombre">' +
-                '<input id="email" class="swal2-input" placeholder="Email">' +
-                '<input id="telefono" class="swal2-input" placeholder="Teléfono">',
+                <p class="h4">Muy bien hecho</p>`,
                     confirmButtonAriaLabel: "Jugar de nuevo",
+                    input: "text",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
-                    preConfirm: () => {
-                        // Obtener los valores de los inputs
-                    nombre = Swal.getPopup().querySelector("#nombre").value;
-                    email = Swal.getPopup().querySelector("#email").value;
-                    telefono = Swal.getPopup().querySelector("#telefono").value;
-                    }
                 })
                 .then(resultado => {
-                        GuardarGanador(nombre, email, telefono);
+                    if (resultado.value) {
+                        let nombre = resultado.value;
+                        GuardarGanador(nombre);
+                    }
                 })
                 .then(this.reiniciarJuego);
         },
@@ -217,38 +209,14 @@ new Vue({
     },
 });
 
-function GuardarGanador(nombre, email, telefono){
+function GuardarGanador(winner){
+    // Recuperar el arreglo del localStorage
+    var Ganadores = JSON.parse(localStorage.getItem('Ganadores')) || [];
 
-    // Obtener la fecha y hora actual
-    const fechaActual = new Date();
-
-    // Formatear la fecha y hora
-    const dia = fechaActual.getDate().toString().padStart(2, "0");
-    const mes = (fechaActual.getMonth() + 1).toString().padStart(2, "0");
-    const anio = fechaActual.getFullYear().toString();
-    const fechaFormateada = `${dia}/${mes}/${anio}`;
+    // Agregar el nuevo elemento al arreglo
+    Ganadores.push(winner);
     
-    const hora = fechaActual.getHours().toString().padStart(2, "0");
-    const minutos = fechaActual.getMinutes().toString().padStart(2, "0");
-    const horaFormateada = `${hora}:${minutos}`;
-
-    const winner = {
-        fecha : fechaFormateada,
-        hora : horaFormateada,
-        nom : nombre,
-        mail : email,
-        tel : telefono
-    }
-
-    if (nombre != ''){
-        // Recuperar el arreglo del localStorage
-        var Ganadores = JSON.parse(localStorage.getItem('Ganadores')) || [];
-
-        // Agregar el nuevo elemento al arreglo
-        Ganadores.push(winner);
-
-        // Guardar el arreglo actualizado en el localStorage
-        localStorage.setItem('Ganadores', JSON.stringify(Ganadores));
-    }
+    // Guardar el arreglo actualizado en el localStorage
+    localStorage.setItem('Ganadores', JSON.stringify(Ganadores));
 
 }
