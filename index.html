@@ -5,13 +5,17 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1,shrink-to-fit=no">
-        <meta name="description" content="Jugar memorama en línea">
-        <title>Memorama con JavaScript, Bootstrap y Vue.JS</title>
+        <meta name="description" content="Jugar memorama con LPS">
+        <title>Jugá con La Perseverancia Seguros</title>
         <link href="./css/bootstrap.min.css" rel="stylesheet">
         <link href="./css/style.css" rel="stylesheet">
+        <link rel="./img/apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+        <link rel="manifest" href="./img/site.webmanifest">
     </head>
     <body>
-        <main role="main" class="container-fluid" id="app">
+        <main role="main" class="container" id="app">
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-center">Jugá con La Perseverancia Seguros</h1>
@@ -24,7 +28,7 @@
             </div>
             <div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
                 class="row">
-                <div :key="indiceFila+''+indiceImagen" class="col-3"
+                <div :key="indiceFila+''+indiceImagen" class="col-2"
                     v-for="(imagen, indiceImagen) in fila">
                     <div class="mb-3">
                         <img @click="voltear(indiceFila, indiceImagen)"
@@ -38,7 +42,7 @@
         </main>
         <footer class="px-2 py-2 fixed-bottom bg-danger text-white">
             <span>
-                <a class="text-white" href="ganadores.html"> Ver Ganadores </a>
+            <!--   <a class="text-white" href="ganadores.html"> Ver Ganadores </a> --> 
             </span>
         </footer>
         <script src="./js/sweetalert2.all.min.js"></script>

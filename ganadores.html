@@ -61,6 +61,15 @@
         background-color: #0062cc;
       }
 
+      .my-actions { margin: 0 2em; }
+      .order-1 { order: 1; }
+      .order-2 { order: 2; }
+      .order-3 { order: 3; }
+
+      .right-gap {
+        margin-right: auto;
+      }
+
       </style>
   </head>
   <body>
@@ -92,7 +101,7 @@
         fila.innerHTML = `
           <td>${elemento.fecha}</td>
           <td>${elemento.hora}</td>
-          <td>${elemento.nom}</td>
+          <td>${elemento.nombre}</td>
           <td>${elemento.mail}</td>
           <td>${elemento.tel}</td>
         `;
@@ -111,35 +120,38 @@
   const winner = storedData[randomNumber];
 
   // Mostrar el nombre del ganador en la consola o en un alert
-  console.log(`El ganador es: ${winner.nom}`);
+  console.log(`El ganador es: ${winner.nombre}`);
 
   // También puedes mostrar el nombre del ganador en el HTML utilizando por ejemplo:
-  Swal.fire(`El ganador es: ${winner.nom}`)
+  Swal.fire(`El ganador es: ${winner.nombre}`)
 });
 
 document.getElementById("eliminarTodo").addEventListener("click", function() {
 
 
-  Swal.fire({
-  title: 'Esta seguro de borrar?',
-  text: "No se podrán recuperar!",
+Swal.fire({
+  title: 'Esta usted seguro?',
+  text: "Se eliminaran todos los ganadores!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Si, borrar'
+  confirmButtonText: 'Si, borrar!'
 }).then((result) => {
   if (result.isConfirmed) {
-    // Eliminar todos los elementos del LocalStorage
-    localStorage.removeItem("Ganadores");
-    location.reload();
+    Swal.fire(
+      'Borrados!',
+      'Los registros se han borrado',
+      'success',
+      // Eliminar todos los elementos del LocalStorage
+      localStorage.removeItem("Ganadores"),
+      document.location.reload()
+    )
   }
 })
-
-  
 });
 
     </script>
-            <script src="./js/sweetalert2.all.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

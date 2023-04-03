@@ -1,7 +1,7 @@
-const MAXIMOS_INTENTOS = 8, // Intentos máximos que tiene el jugador
-    COLUMNAS = 4, // Columnas del memorama
+const MAXIMOS_INTENTOS = 6, // Intentos máximos que tiene el jugador
+    COLUMNAS = 6, // Columnas del memorama
     SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
-    NOMBRE_IMAGEN_OCULTA = "./img/lps.svg"; // La imagen que se muestra cuando la real está oculta
+    NOMBRE_IMAGEN_OCULTA = "./img/lps.jpg"; // La imagen que se muestra cuando la real está oculta
     var nombre = ''
     var email = ''
     var telefono = ''
@@ -10,12 +10,18 @@ new Vue({
     data: () => ({
         // La ruta de las imágenes. Puede ser relativa o absoluta
         imagenes: [
-            "./img/accidentes-personales.svg",
-            "./img/automotores.svg",
-            "./img/combinado-familiar.svg",
-            "./img/rc-caucion.svg",
-            "./img/incendio.svg",
-            "./img/motovehiculos.svg",
+            //"./img/accidentes-personales.svg",
+            "./img/integral.jpg",
+            "./img/movilidad.jpg",
+            "./img/mascotas.jpg",
+            "./img/franquiciasmoviles.jpg",
+            "./img/caucionpost.jpg",
+            "./img/hogar1024x1024.jpg",
+            "./img/1.jpg",
+            "./img/2.jpg",
+            "./img/3.jpg"
+            //"./img/incendio.svg",
+            //"./img/motovehiculos.svg",
         ],
         memorama: [],
         // Útiles para saber cuál fue la carta anteriormente seleccionada
@@ -50,22 +56,23 @@ new Vue({
                     title: "¡Ganaste!",
                     html: `
                 <img class="img-fluid" src="./img/ganaste.png" alt="Ganaste">
-                <p class="h4">Muy bien hecho</p><br>` + 
-                '<input id="nombre" class="swal2-input" placeholder="Nombre">' +
-                '<input id="email" class="swal2-input" placeholder="Email">' +
-                '<input id="telefono" class="swal2-input" placeholder="Teléfono">',
+                <p class="h4">Muy bien hecho</p>`,
+                //<br>` + 
+                //'<input id="nombre" class="swal2-input" placeholder="Nombre">' +
+                //'<input id="email" class="swal2-input" placeholder="Email">' +
+                //'<input id="telefono" class="swal2-input" placeholder="Teléfono">',
                     confirmButtonAriaLabel: "Jugar de nuevo",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
-                    preConfirm: () => {
-                        // Obtener los valores de los inputs
-                    nombre = Swal.getPopup().querySelector("#nombre").value;
-                    email = Swal.getPopup().querySelector("#email").value;
-                    telefono = Swal.getPopup().querySelector("#telefono").value;
-                    }
+                //    preConfirm: () => {
+                //        // Obtener los valores de los inputs
+                //    nombre = Swal.getPopup().querySelector("#nombre").value;
+                //    email = Swal.getPopup().querySelector("#email").value;
+                //    telefono = Swal.getPopup().querySelector("#telefono").value;
+                //    }
                 })
                 .then(resultado => {
-                        GuardarGanador(nombre, email, telefono);
+                //        GuardarGanador(nombre, email, telefono);
                 })
                 .then(this.reiniciarJuego);
         },
@@ -217,7 +224,7 @@ new Vue({
     },
 });
 
-function GuardarGanador(nombre, email, telefono){
+function GuardarGanador(nom, email, telefono){
 
     // Obtener la fecha y hora actual
     const fechaActual = new Date();
@@ -235,7 +242,7 @@ function GuardarGanador(nombre, email, telefono){
     const winner = {
         fecha : fechaFormateada,
         hora : horaFormateada,
-        nom : nombre,
+        nombre : nom,
         mail : email,
         tel : telefono
     }
