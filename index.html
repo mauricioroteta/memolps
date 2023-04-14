@@ -28,7 +28,7 @@
             </div>
             <div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
                 class="row">
-                <div :key="indiceFila+''+indiceImagen" class="col-2"
+                <div :key="indiceFila+''+indiceImagen" class="col-3"
                     v-for="(imagen, indiceImagen) in fila">
                     <div class="mb-3">
                         <img @click="voltear(indiceFila, indiceImagen)"

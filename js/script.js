@@ -1,5 +1,5 @@
 const MAXIMOS_INTENTOS = 6, // Intentos máximos que tiene el jugador
-    COLUMNAS = 6, // Columnas del memorama
+    COLUMNAS = 4, // Columnas del memorama
     SEGUNDOS_ESPERA_VOLTEAR_IMAGEN = 1, // Por cuántos segundos mostrar ambas imágenes
     NOMBRE_IMAGEN_OCULTA = "./img/lps.jpg"; // La imagen que se muestra cuando la real está oculta
     var nombre = ''
@@ -17,10 +17,10 @@ new Vue({
             "./img/franquiciasmoviles.jpg",
             "./img/caucionpost.jpg",
             "./img/hogar1024x1024.jpg",
-            "./img/1.jpg",
-            "./img/2.jpg",
-            "./img/3.jpg"
-            //"./img/incendio.svg",
+            //"./img/1.jpg",
+            //"./img/2.jpg"
+            //"./img/3.jpg",
+            //"./img/incendio.svg"
             //"./img/motovehiculos.svg",
         ],
         memorama: [],
