@@ -11,12 +11,12 @@ new Vue({
         // La ruta de las imágenes. Puede ser relativa o absoluta
         imagenes: [
             //"./img/accidentes-personales.svg",
-            "./img/integral.jpg",
-            "./img/movilidad.jpg",
-            "./img/mascotas.jpg",
-            "./img/franquiciasmoviles.jpg",
-            "./img/caucionpost.jpg",
-            "./img/hogar1024x1024.jpg",
+            "./img/ViviendaProtegida.jpg",
+            "./img/Camiones-AP.jpg",
+            "./img/GarantiasAduaneras1.jpg",
+            "./img/MobilidadUrbana.jpg",
+            "./img/IntegralEscuelas.jpg",
+            "./img/lpsmascerca.jpg",
             //"./img/1.jpg",
             //"./img/2.jpg"
             //"./img/3.jpg",
